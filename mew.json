@@ -1,9 +1,9 @@
 {
     "name": "Mew",
-    "image": "images/Mew.png",
+    "image": "https://static.wikia.nocookie.net/pokemon/images/b/b1/151Mew.png/revision/latest?cb=20200627085108",
     "ability": "Synchronize",
     "description": "Placeholder",
-    "footprint": "images/F0151.png",
+    "footprint": "https://static.wikia.nocookie.net/pokemon/images/9/98/F151.png/revision/latest?cb=20120414065404",
     "dexindex": "#0151",
     "type": "Psychich",
     "subtype": null,

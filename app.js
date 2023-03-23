@@ -1,5 +1,12 @@
 "use strict";
 
+// window.addEventListener("load", initApp);
+
+// // async function initApp() {
+// //     const data = await addPokemon("https://raw.githubusercontent.com/Adelkilde/Data-Pokemon/main/mew.json")
+
+// // }
+
 const mew = {
     name: "Mew",
     image: "images/Mew.png",
