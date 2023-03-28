@@ -22,49 +22,50 @@ function showPokemonner(pokemonList) {
 
 function showPokemon(pokemon) {
     let myHTML = /*html*/ 
-    `<article class="grid-item">
-        <img src="${pokemon.image}">
-        <h2>${pokemon.name}</h2>
-        <p>${pokemon.dexindex}</p>
+    `<article id="pokemon-container">
+        <img src=${pokemon.image}>
+        <b>${pokemon.name}</b> - <b>${pokemon.dexindex}</b><br>
     </article>
     `;
     
+    document.querySelector("#pokemonner").insertAdjacentHTML("beforeend", myHTML);
     document.querySelector("#pokemonner article:last-child").addEventListener("click", pokemonClicked);
 
     function pokemonClicked() {
-        showPokemonModal(pokemon);
+        let pokemonDexInfo = /*html*/ ` 
+    <article id=pokemon-info-list>
+        <img src=${pokemon.image}>
+        <li><b>Name:</b> ${pokemon.name}</li>
+        <li><b>Description:</b> ${pokemon.description}</li>
+        <li><b>Pokédex index:</b> ${pokemon.dexindex}</li>
+        <li><b>Type:</b> ${pokemon.type}</li>
+        <li><b>Subtype: </b>${pokemon.subtype}</li>
+        <li><b>Gender:</b> ${pokemon.gender}</li>
+        <li><b>Weight:</b> ${pokemon.weight}</li>
+        <li><b>Height:</b> ${pokemon.height}</li>
+        <li><b>Generation:</b> ${pokemon.generation}</li>
+        <li><b>Can evolve:</b> ${pokemon.canEvolve}</li>
+        <li><b>Ability: </b>${pokemon.ability}</li>
+        <li><b>HP:</b> ${pokemon.statsHP}</li>
+        <li><b>Attack:</b> ${pokemon.statsAttack}</li>
+        <li><b>Defence:</b> ${pokemon.statsDefence}</li>
+        <li><b>Special Attack:</b> ${pokemon.statsSpecialAttack}</li>
+        <li><b>Special Defence:</b> ${pokemon.statsSpecialDefence}</li>
+        <li><b>Speed:</b> ${pokemon.statsSpeed}</li>
+        <img id=footprint src=${pokemon.footprint}><br>
+        <button id="detailed-info-btn">Close</button>
+     </article>   
+    `;
+
+    document.querySelector("#dialog-pokemon-info").insertAdjacentHTML("beforeend", pokemonDexInfo);
+
+    document.querySelector("#dialog-pokemon-info").showModal(pokemon);
+    document.querySelector("#detailed-info-btn").addEventListener("click", closeDialog);
     }
 }
 
-function showPokemonModal(pokemon) {
-}
-
-
-
-function showPokemon(pokemon) {
-    let myHTML = /*html*/`
-    <li>Name: ${pokemon.name}</li>
-    <li> <img src="${pokemon.image}"> </li>
-    <li>Ability: ${pokemon.ability}</li>
-    <li>Footprint: <img src="${pokemon.footprint}"></li>
-    <li>Pokedex: ${pokemon.dexindex}</li>
-    <li>Type: ${pokemon.type}</li>
-    <li>Subtype: ${pokemon.subtype}</li>
-    <li>Weakness: ${pokemon.weakness}</li>
-    <li>Gender: ${pokemon.gender}</li>
-    <li>Weight: ${pokemon.weight}</li>
-    <li>Height: ${pokemon.height}</li>
-    <li>Generation: ${pokemon.generation}</li>
-    <li>Spil Version: ${pokemon.spilversion}</li>
-    <li>Can Evolve: ${pokemon.canEvolve}</li>
-    <li>Stats HP: ${pokemon.statsHP}</li>
-    <li>Stats Attack: ${pokemon.statsAttack}</li>
-    <li>Stats Defense: ${pokemon.statsDefence}</li>
-    <li>Stats Special Attack: ${pokemon.statsSpecialAttack}</li>
-    <li>Stats Special Defense: ${pokemon.statsSpecialDefense}</li>
-    <li>Stats Speed: ${pokemon.statsSpeed}</li>
-    <br>
-    `
-    document.querySelector("#pokemonner").insertAdjacentHTML("beforeend", myHTML);
-}
-
+function closeDialog() {
+    document.querySelector("#dialog-pokemon-info").close();
+    document.querySelector("#pokemon-info-list").remove();
+  }
+  

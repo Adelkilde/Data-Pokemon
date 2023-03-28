@@ -1,13 +1,12 @@
 :root {
-  --red: rgb(238, 95, 85);
-  --dark-red: rgb(155, 56, 49);
+  --blue: rgb(88, 125, 243);
+  --dark-blue: rgb(49, 56, 155);
   --grey: #f1f1f4;
   --text-color-dark: #333;
   --white: #f2f2f2;
   --font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
     sans-serif;
 }
-
 html {
   color: var(--text-color-dark);
   font-family: var(--font-family);
@@ -31,7 +30,7 @@ main {
   padding: 137px 0 0;
 }
 header {
-  background-color: var(--red);
+  background-color: var(--blue);
   padding: 0.1em;
   position: fixed;
   top: 0;
@@ -39,7 +38,7 @@ header {
   right: 0;
 }
 footer {
-  background-color: var(--red);
+  background-color: var(--blue);
   padding: 1.5em;
   text-align: center;
   font-weight: 750;
@@ -79,7 +78,7 @@ footer {
   cursor: pointer;
 }
 .grid-container > article:hover {
-  box-shadow: 4px 8px 16px 8px var(--dark-red);
+  box-shadow: 4px 8px 16px 8px var(--dark-blue);
 }
 .grid-container img {
   width: 100%;
@@ -98,7 +97,7 @@ footer {
   height: 50%;
   object-fit: cover;
 }
-#detail-view-btn {
+#detailed-info-btn {
   font-size: 100%;
   padding: 1em 1em 1em;
   width: 100%;
