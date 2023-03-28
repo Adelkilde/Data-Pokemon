@@ -1,38 +1,48 @@
 "use strict";
 
-// window.addEventListener("load", initApp);
+window.addEventListener("load", initApp);
 
-// // async function initApp() {
-// //     const data = await addPokemon("https://raw.githubusercontent.com/Adelkilde/Data-Pokemon/main/mew.json")
-
-// // }
-
-const mew = {
-    name: "Mew",
-    image: "images/Mew.png",
-    ability: "Synchronize",
-    description: "Placeholder",
-    footprint: "images/F0151.png",
-    dexindex: `#0151`,
-    type: "Psychich",
-    subtype: null,
-    weaknesses: "Ghost, Dark, Bug",
-    gender: "Gender unknown",
-    weight: `4.0 kg`,
-    height: `0.4 m`,
-    generation: 1,
-    spilversion: undefined,
-    canEvolve: false,
-    statsHP: 100,
-    statsAttack: 100,
-    statsDefence: 100,
-    statsSpecialAttack: 100,
-    statsSpecialDefense: 100,
-    statsSpeed: 100,
+async function initApp() {
+    const pokemonner = await getPokemonner();
+    showPokemonner(pokemonner);
+    // pokemonner.forEach(addPokemon);
 }
 
-function addPokemon(pokemon) {
-    const myHTML = /*html*/`
+async function getPokemonner(){
+    const response = await fetch(`https://cederdorff.github.io/dat-js/05-data/pokemons.json`)
+    const data = await response.json();
+    return data;
+}
+
+function showPokemonner(pokemonList) {
+    for (const pokemon of pokemonList) {
+        showPokemon(pokemon);
+    }
+}
+
+function showPokemon(pokemon) {
+    let myHTML = /*html*/ 
+    `<article class="grid-item">
+        <img src="${pokemon.image}">
+        <h2>${pokemon.name}</h2>
+        <p>${pokemon.dexindex}</p>
+    </article>
+    `;
+    
+    document.querySelector("#pokemonner article:last-child").addEventListener("click", pokemonClicked);
+
+    function pokemonClicked() {
+        showPokemonModal(pokemon);
+    }
+}
+
+function showPokemonModal(pokemon) {
+}
+
+
+
+function showPokemon(pokemon) {
+    let myHTML = /*html*/`
     <li>Name: ${pokemon.name}</li>
     <li> <img src="${pokemon.image}"> </li>
     <li>Ability: ${pokemon.ability}</li>
@@ -55,6 +65,6 @@ function addPokemon(pokemon) {
     <li>Stats Speed: ${pokemon.statsSpeed}</li>
     <br>
     `
-    document.querySelector("#pokemans").insertAdjacentHTML("beforeend", myHTML);
+    document.querySelector("#pokemonner").insertAdjacentHTML("beforeend", myHTML);
 }
-addPokemon(mew);
+
